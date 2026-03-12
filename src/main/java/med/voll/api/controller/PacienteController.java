@@ -45,6 +45,7 @@ public class PacienteController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    // @Secured("ROLE_ADMIN"). para utilizar deve-se adicionar a seguinte anotação na classe Securityconfigurations do projeto: @EnableMethodSecurity(securedEnabled = true)
     public ResponseEntity excluir(@PathVariable Long id) {
         var paciente = repository.getReferenceById(id);
         paciente.excluir();

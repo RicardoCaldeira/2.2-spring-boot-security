@@ -37,6 +37,7 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
+    // @Secured("ROLE_ADMIN"). para utilizar deve-se adicionar a seguinte anotação na classe Securityconfigurations do projeto: @EnableMethodSecurity(securedEnabled = true)
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
@@ -46,6 +47,7 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    // @Secured("ROLE_ADMIN"). para utilizar deve-se adicionar a seguinte anotação na classe Securityconfigurations do projeto: @EnableMethodSecurity(securedEnabled = true)
     public ResponseEntity excluir(@PathVariable Long id) {
         var medico = repository.getReferenceById(id);
         medico.excluir();
